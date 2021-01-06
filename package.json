@@ -1,0 +1,35 @@
+{
+  "name": "MrGamerbot",
+  "version": "1",
+  "main": "src/index",
+  "author": "Mr.Gamer",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "@types/node": "^14.14.17",
+    "diff": "^5.0.0",
+    "discord-player": "^3.2.0",
+    "discord-ytdl-core": "^5.0.0",
+    "discord.js": "^12.5.1",
+    "ffmpeg-static": "^4.2.7",
+    "figlet": "^1.5.0",
+    "fs": "^0.0.1-security",
+    "jspdf": "^2.2.0",
+    "lyrics-finder": "^21.4.0",
+    "merge-options": "^3.0.4",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
+    "node-opus": "^0.3.3",
+    "npm": "^6.14.10",
+    "soundcloud-scraper": "^4.0.1",
+    "spotify-url-info": "^2.2.0",
+    "youtube-sr": "^2.0.5",
+    "yt-search": "^2.5.1",
+    "ytdl-core": "^4.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-tesseract": "^0.0.3"
+  }
+}
