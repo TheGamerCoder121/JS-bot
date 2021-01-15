@@ -1,5 +1,7 @@
+/* eslint-disable max-statements-per-line */
 const { Client, Collection } = require('discord.js');
 const Util = require('./Util.js');
+const config = require('../../config');
 
 module.exports = class MenuDocsClient extends Client {
 
@@ -24,6 +26,8 @@ module.exports = class MenuDocsClient extends Client {
 		this.logchannel = options.logchannel;
 
 		this.logo = options.logodata;
+
+		this.config = config;
 	}
 	validate(options) {
 		if (typeof options !== 'object') throw new TypeError('Options should be a type of Object.');

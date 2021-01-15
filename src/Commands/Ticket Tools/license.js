@@ -112,19 +112,19 @@ module.exports = class extends Command {
 								// Smessage.channel.send(survey);
 								// eslint-disable-next-line new-cap
 								const doc = new jsPDF();
-								doc.text(`Created on ${today}`, 150, 10)
-								doc.setFontSize(25)
+								doc.text(`Created on ${today}`, 150, 10);
+								doc.setFontSize(25);
 								doc.text(`Legal Name: ${survey.name}`, 50, 70, 'center');
 								doc.text(`Item(s): ${survey.items}`, 10, 85, 'left');
 								doc.text(`Email: ${survey.email}`, 150, 70, 'center');
 								doc.addImage(config.logodata, 'JPEG', 15, 20, 35, 35);
-								doc.setFontSize(40)
+								doc.setFontSize(40);
 								doc.text(`${message.guild.name}`, 120, 40, 'center');
 								doc.setLineWidth(1);
 								doc.line(10, 100, 200, 100);
 								// will save the file in the current working directory
-								doc.save('pdf/test.pdf');
-								const attachment = new MessageAttachment('./pdf/test.pdf');
+								doc.save('data/test.pdf');
+								const attachment = new MessageAttachment('data/test.pdf');
 								message.channel.send(`Here is your generated agreement ${message.author},`, attachment);
 						  });
 					} else if (emoji === '👎') {

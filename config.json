@@ -1,5 +1,5 @@
 {
-    "prefix": "!",
+    "prefix": ".",
     "token": "NzY5MDEyOTU4Nzg0OTEzNDE5.X5I1IA.f1PFk7V3kLYWxnXY1w_Dk59PTV0",
     "owners": ["553694748091875328", "747885440211746959"],
     "logchannel": "759084017953406976",
@@ -15,6 +15,15 @@
         "error": "0xFF0000",
         "success": "0x00FF46",
         "warning": "0xFFD100"
-      }
+    },
+    "tempvc": {
+        "Temp_VC_Category": "746516857372147735", 
+        "Create_VCS_Under": "770436384645185566", 
+        "Allow_All_Roles": "false", 
+        "Allowed_Roles": ["767797372373172304", "767797900381126656"]
+    },
+    "Moderation": {
+        "muted_role": "754810548872544328"
+    }
   
 }

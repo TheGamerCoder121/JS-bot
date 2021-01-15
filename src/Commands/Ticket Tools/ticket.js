@@ -1,6 +1,9 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable id-length */
 const Command = require('../../Structures/Command');
 const { MessageEmbed } = require('discord.js');
+// eslint-disable-next-line prefer-destructuring
+const prefix = this.prefix;
 
 module.exports = class extends Command {
 
@@ -9,7 +12,7 @@ module.exports = class extends Command {
 			aliases: ['new', 't'],
 			description: 'Creates a ticket',
 			category: 'Ticket Tools',
-			usage: '<topic>'
+			usage: `${prefix}new <subject>`
 		});
 	}
 	async run(message) {
@@ -26,8 +29,8 @@ module.exports = class extends Command {
 
 		if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !SupportCategory) {
 			message.channel.send('Sorry, buy I do not have permisson to create the Support Category needed for tickets')
-			.then(msg => {
-				msg.delete({ timeout: 10000 })
+				.then(msg => {
+					msg.delete({ timeout: 10000 });
 			  })
 			  .catch(console.error);
 		}
@@ -47,29 +50,29 @@ module.exports = class extends Command {
 
 		if (!supportrole) {
 			return message.channel.send('Sorry, but there is no support team role in this server. \n Either create one or give me permission to create one')
-			.then(msg => {
-				msg.delete({ timeout: 5000 })
-			  })
-			  .catch(console.error);
+				.then(msg => {
+					msg.delete({ timeout: 5000 });
+				})
+				.catch(console.error);
 		}
 
 		if (!reason) {
 			return message.channel.send(`Please provide a ticket subject. \n ${this.client.prefix}ticket {subject}`)
-			.then(msg => {
-				msg.delete({ timeout: 5000 })
-			  })
-			  .catch(console.error);
+				.then(msg => {
+					msg.delete({ timeout: 5000 });
+				})
+				.catch(console.error);
 		}
 		// eslint-disable-next-line no-useless-escape
 		var specialChars = '!@#$^&%*()+=-[]\/{}|:<>?,.';
 
-		const channelName = `ticket-${message.author.username}-${message.author.discriminator}`;
-		if (message.guild.channels.cache.find(channel => channel.name === `ticket-${message.author.username.toLowerCase().replace(specialChars, '')}-${message.author.discriminator}`)) {
+		const channelName = `ticket-${message.author.username}-${reason}`;
+		if (message.guild.channels.cache.find(channel => channel.name.includes(`ticket-${message.author.username.toLowerCase().replace(specialChars, '')}`))) {
 			return message.channel.send('Hey! You already have a ticket open!')
-			.then(msg => {
-				msg.delete({ timeout: 10000 })
-			  })
-			  .catch(console.error);
+				.then(msg => {
+					msg.delete({ timeout: 10000 });
+				})
+				.catch(console.error);
 		}
 
 		message.guild.channels.create(channelName, { parent: SupportCategory.id, topic: `Ticket Owner: ${message.author.tag}, ID: ${message.author.id}, reason for ticket: ${reason}` }).then(c => {
@@ -88,12 +91,12 @@ module.exports = class extends Command {
 				VIEW_CHANNEL: true
 			});
 			const Greeting = new MessageEmbed()
-			.setThumbnail(message.author.displayAvatarURL({ dynamic: true, size: 512 }))
-			.setColor(message.author.displayHexColor || 'BLUE')
-			.addField('New Support Ticket', `<@${message.author.id}> Thanks for submitting a ticket! Our staff will be with you shortly!`)
-			.addField('Issue', reason)
-			.setTimestamp()
-			.setFooter(`Requested by ${message.author.tag}`);
+				.setThumbnail(message.author.displayAvatarURL({ dynamic: true, size: 512 }))
+				.setColor(message.author.displayHexColor || 'BLUE')
+				.addField('New Support Ticket', `<@${message.author.id}> Thanks for submitting a ticket! Our staff will be with you shortly!`)
+				.addField('Issue', reason)
+				.setTimestamp()
+				.setFooter(`Requested by ${message.author.tag}`);
 			c.send(Greeting);
 			const createdTicketEmbed = new MessageEmbed()
 				.setThumbnail(message.author.displayAvatarURL({ dynamic: true, size: 512 }))
@@ -103,8 +106,8 @@ module.exports = class extends Command {
 				.setTimestamp()
 				.setFooter(`Requested by ${message.author.tag}`);
 			message.channel.send(createdTicketEmbed)
-			.then(msg => {
-				msg.delete({ timeout: 10000 })
+				.then(msg => {
+					msg.delete({ timeout: 10000 });
 			  })
 			  .catch(console.error);
 		}).catch(console.error);
